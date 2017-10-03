@@ -38,7 +38,7 @@
 */
 
 // YOUR CODE HERE
-var table = [{steps: 0}, null, null, null];
+var table = [{steps: 0}, null, null, null, null, null, null];
 function pingPong(tableIn){
   this.table = tableIn;
   // this.direction="right";
@@ -51,7 +51,7 @@ function pingPong(tableIn){
     if(cell){
       flag = index;
       this.steps = cell.steps;
-      if(steps%(tableIn.length+2)<tableIn.length){
+      if((steps+1)%(tableIn.length*2-1)<tableIn.length){
         this.direction = "right";
       }else{
         this.direction = "left";
@@ -68,13 +68,11 @@ function pingPong(tableIn){
       break;
     }else if(index === tableIn.length-1 && this.direction==="right"){   //reached the right end
       steps++;
-      this.direction="left";
       this.table[index]=null;
       this.table[index-1]={steps: this.steps};
       break;
     }else if(index === 0 && this.direction==="left"){  //reached the left end again
       steps++;
-      this.direction="right";
       this.table[index]=null;
       this.table[index+1]={steps: this.steps};
       break;
@@ -83,7 +81,7 @@ function pingPong(tableIn){
 
   }
 
-  
+  console.log(this.direction);
   console.log(this.table);
   table = this.table;
 }
