@@ -71,7 +71,8 @@ function birthdayReminder(peopleIn){
 // daysUntilDate("10/03/2017");
 var testInput = [
   {name: "Sherwin", dob: "10/01/1991"},
-  {name: "Jack", dob:"10/03/1987"}
+  {name: "Jack", dob:"10/03/1987"},
+  {name: "Jackie", dob:"10/03/2004"}
 ];
 var ans = birthdayReminder(testInput);
 console.log(ans);

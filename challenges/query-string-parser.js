@@ -45,3 +45,40 @@
 */
 
 // YOUR CODE HERE
+function parseQueryString(stringIn){
+  var stringToArray = stringIn.split("");
+  var nameBuffer = [];
+  var valueBuffer = [];
+  var nameString = "";
+  var valueString = "";
+  var flag = "name";
+  var outputObj = {};
+
+  stringToArray.forEach(function(letter){
+    if(flag==="name"){
+      if(letter!=="="){
+        nameBuffer.push(letter);
+      }else{
+        nameString = nameBuffer.join("");
+        flag="value";
+      }
+    }else if(flag==="value"){
+      if(letter!=="&"){
+        valueBuffer.push(letter);
+      }else{
+        valueString = valueBuffer.join("");
+        outputObj[nameString] = valueString;
+        flag="name";
+        valueBuffer = [];
+        nameBuffer = [];
+      }
+    }
+  });
+  valueString = valueBuffer.join("");
+  outputObj[nameString] = valueString; //This is for the last one that meets now '&' to fit the if statements up there
+
+  return outputObj;
+}
+
+console.log(parseQueryString("a=apple&b=beet&b=blueberry&c=&d=10"));
+console.log(parseQueryString("first=alpha&last=omega"));
