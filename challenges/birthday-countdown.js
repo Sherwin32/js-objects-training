@@ -34,3 +34,44 @@
 */
 
 // YOUR CODE HERE
+function daysUntilDate(dateIn){ //dateIn format: "mm/dd/yyyy"
+  console.log("dateIn: " + dateIn);
+  var now = new Date();
+  var monthIn = parseInt(dateIn[0]+dateIn[1])-1;
+  var dayIn = dateIn[3]+dateIn[4];
+  var yearIn = dateIn[6]+dateIn[7]+dateIn[8]+dateIn[9];
+  console.log(`yyyymmdd: ${yearIn}${monthIn}${dayIn}`);
+  var dayInDate = new Date(yearIn, monthIn, dayIn);
+  console.log(dayInDate);
+  var daysUntilDate = dayInDate.getTime() - now.getTime();
+  daysUntilDate = Math.ceil(daysUntilDate / 1000 / 60 / 60 / 24);
+  console.log(daysUntilDate);
+  return daysUntilDate;
+}
+
+function birthdayReminder(peopleIn){
+  var returnReminder = [];
+  peopleIn.forEach(function(person){
+    var now = new Date();
+    var dobMonth = person.dob[0]+person.dob[1];
+    var dobDay = person.dob[3]+person.dob[4];
+    var dobYear = now.getYear()+1900;
+    console.log(`dobYear: ${dobYear}`);
+    var bodThisYear = new Date(`bodThisYear: ${dobMonth}/${dobDay}/${dobYear}`);
+    if(now.getTime() > bodThisYear.getTime()){
+      dobYear = dobYear+1;
+    }
+    returnReminder.push(`${person.name}\`s birthday is in ${daysUntilDate(`${dobMonth}/${dobDay}/${dobYear}`)} days`);
+  });
+
+  return returnReminder;
+  
+}
+
+// daysUntilDate("10/03/2017");
+var testInput = [
+  {name: "Sherwin", dob: "10/01/1991"},
+  {name: "Jack", dob:"10/03/1987"}
+];
+var ans = birthdayReminder(testInput);
+console.log(ans);
