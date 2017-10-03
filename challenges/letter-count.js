@@ -31,3 +31,17 @@
 */
 
 // YOUR CODE HERE
+function letterCount(stringIn){
+  var stringToArray = stringIn.split('');
+  var outputObj = {};
+  stringToArray.forEach(function(letter){
+    if(!outputObj[letter]){
+      outputObj[letter] = 1;
+    }else{
+      outputObj[letter]++;
+    }
+  });
+  return outputObj;
+}
+
+console.log(letterCount("apple"));
