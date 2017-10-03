@@ -38,3 +38,71 @@
 */
 
 // YOUR CODE HERE
+var table = [{steps: 0}, null, null, null];
+function pingPong(tableIn){
+  this.table = tableIn;
+  // this.direction="right";
+  this.direction;
+  this.steps = 0;
+  var flag = 0;
+  for(var i=0; i<tableIn.length; i++){
+    var cell = this.table[i];
+    var index = i;
+    if(cell){
+      flag = index;
+      this.steps = cell.steps;
+      if(steps%(tableIn.length+2)<tableIn.length){
+        this.direction = "right";
+      }else{
+        this.direction = "left";
+      }
+      if(index !== tableIn.length-1 && this.direction==="right"){
+      steps++;
+      this.table[index]=null;
+      this.table[index+1]={steps: this.steps};
+      break;
+    }else if(index!==0 && this.direction==="left"){  //Bouncing backwords
+      steps++;
+      this.table[index]=null;
+      this.table[index-1]={steps: this.steps};
+      break;
+    }else if(index === tableIn.length-1 && this.direction==="right"){   //reached the right end
+      steps++;
+      this.direction="left";
+      this.table[index]=null;
+      this.table[index-1]={steps: this.steps};
+      break;
+    }else if(index === 0 && this.direction==="left"){  //reached the left end again
+      steps++;
+      this.direction="right";
+      this.table[index]=null;
+      this.table[index+1]={steps: this.steps};
+      break;
+    }
+    }
+
+  }
+
+  
+  console.log(this.table);
+  table = this.table;
+}
+
+pingPong(table);
+pingPong(table);
+pingPong(table);
+pingPong(table);
+pingPong(table);
+pingPong(table);
+pingPong(table);
+pingPong(table);
+pingPong(table);
+pingPong(table);
+pingPong(table);
+pingPong(table);
+pingPong(table);
+pingPong(table);
+pingPong(table);
+pingPong(table);
+pingPong(table);
+pingPong(table);

@@ -61,7 +61,7 @@ function birthdayReminder(peopleIn){
     if(now.getTime() > bodThisYear.getTime()){
       dobYear = dobYear+1;
     }
-    returnReminder.push(`${person.name}\`s birthday is in ${daysUntilDate(`${dobMonth}/${dobDay}/${dobYear}`)} days`);
+    returnReminder.push(`${person.name}'s birthday is in ${daysUntilDate(`${dobMonth}/${dobDay}/${dobYear}`)} days`);
   });
 
   return returnReminder;
